@@ -1,34 +1,197 @@
-/** Add css rules here for your application. */
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 
-
-/** Example rules used by the template application (remove for your app) */
-h1 {
-  font-size: 2em;
-  font-weight: bold;
-  color: #777777;
-  margin: 40px 0px 70px;
-  text-align: center;
+.container {
+	behavior: url(http://css3pie.com/pie/PIE.htc);
+	width: 400px;
+	height: 425px;
+	border: 2px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 0px 14px rgba(50, 50, 50, 0.92);
+	-moz-box-shadow: 0px 0px 14px rgba(50, 50, 50, 0.92);
+	box-shadow: 0px 0px 14px rgba(50, 50, 50, 0.92);
+	position: relative;
 }
 
-.sendButton {
-  display: block;
-  font-size: 16pt;
+.header {
+	font-family: 'Droid Sans', serif;
 }
 
-/** Most GWT widgets already have a style name defined */
-.gwt-DialogBox {
-  width: 400px;
+.header.caption {
+	text-align: center;
+	font-weight: bold;
+	padding: 8px;
 }
 
-.dialogVPanel {
-  margin: 5px;
+.header.tip {
+	color: gray;
+	font-size: 13px;
 }
 
-.serverResponseLabelError {
-  color: red;
+.table-header {
+	width: 100%;
+	border-bottom: 1px solid gray;
 }
 
-/** Set ids using widget.getElement().setId("idOfElement") */
-#closeButton {
-  margin: 15px 6px 6px;
+.header.tip.first {
+	padding-left: 8px;
+	width: 10%;
+}
+
+.header.tip.second {
+	padding-left: 8px;
+	width: 40%;
+}
+
+.header.tip.third {
+	padding-right: 8px;
+	width: 40%;
+	text-align: right;
+}
+
+.header.tip.forth {
+	padding-right: 8px;
+	width: 10%;
+}
+
+.gpio-content {
+	height: 85%;
+	position: absolute;
+	left: 50%;
+}
+
+.gpio-content .pin-container {
+	position: relative;
+	width: 50px;
+	height: 100%;
+	border: 2px solid black;
+	border-radius: 5px;
+	left: -50%;
+	top: -5px;
+	-webkit-box-shadow: 0px 0px 14px rgba(50, 50, 50, 0.92);
+	-moz-box-shadow: 0px 0px 14px rgba(50, 50, 50, 0.92);
+	box-shadow: 0px 0px 14px rgba(50, 50, 50, 0.92);
+	background-color: rgb(138, 138, 138);
+}
+
+.gpio-table {
+	width: 100%;
+}
+
+.gpio-table td {
+	padding-bottom: 5px;
+}
+
+.gpio-cell {
+	width: 50%;
+	text-align: center;
+}
+
+.gpio-cell>div {
+	behavior: url(http://css3pie.com/pie/PIE.htc);
+}
+
+.outer {
+	width: 18px;
+	height: 18px;
+	-webkit-box-shadow: #666 0px 2px 3px;
+	-moz-box-shadow: #666 0px 2px 3px;
+	box-shadow: #666 0px 2px 3px;
+}
+
+.inner {
+	width: 8px;
+	height: 8px;
+	margin: auto;
+	margin-top: 4px;
+}
+
+.rounded { //
+	behavior: url(http://css3pie.com/pie/PIE.htc);
+	border: 1px solid black;
+	border-radius: 3px;
+}
+
+.circle { //
+	behavior: url(http://css3pie.com/pie/PIE.htc);
+	border-radius: 50%;
+	border: 1px solid black;
+}
+
+.white {
+	background-color: white;
+}
+
+.green {
+	background: #22B305;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#22B305),
+		to(#276E0D));
+	background: -webkit-linear-gradient(#22B305, #276E0D);
+	background: -moz-linear-gradient(#22B305, #276E0D);
+	background: -ms-linear-gradient(#22B305, #276E0D);
+	background: -o-linear-gradient(#22B305, #276E0D);
+	background: linear-gradient(#22B305, #276E0D);
+	-pie-background: linear-gradient(#22B305, #276E0D);
+	behavior: url(/pie/PIE.htc);
+}
+
+.blue {
+	background: #99D0FF;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#99D0FF),
+		to(#335AEE));
+	background: -webkit-linear-gradient(#99D0FF, #335AEE);
+	background: -moz-linear-gradient(#99D0FF, #335AEE);
+	background: -ms-linear-gradient(#99D0FF, #335AEE);
+	background: -o-linear-gradient(#99D0FF, #335AEE);
+	background: linear-gradient(#99D0FF, #335AEE);
+	-pie-background: linear-gradient(#99D0FF, #335AEE);
+}
+
+.orange {
+	background: #FAB14C;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#FAB14C),
+		to(#EE6133));
+	background: -webkit-linear-gradient(#FAB14C, #EE6133);
+	background: -moz-linear-gradient(#FAB14C, #EE6133);
+	background: -ms-linear-gradient(#FAB14C, #EE6133);
+	background: -o-linear-gradient(#FAB14C, #EE6133);
+	background: linear-gradient(#FAB14C, #EE6133);
+	-pie-background: linear-gradient(#FAB14C, #EE6133);
+}
+
+.violet {
+	background: #E44CFA;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#E44CFA),
+		to(#9B33EE));
+	background: -webkit-linear-gradient(#E44CFA, #9B33EE);
+	background: -moz-linear-gradient(#E44CFA, #9B33EE);
+	background: -ms-linear-gradient(#E44CFA, #9B33EE);
+	background: -o-linear-gradient(#E44CFA, #9B33EE);
+	background: linear-gradient(#E44CFA, #9B33EE);
+	-pie-background: linear-gradient(#E44CFA, #9B33EE);
+}
+
+.red {
+	background: #FA5A4C;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#FA5A4C),
+		to(#FD1736));
+	background: -webkit-linear-gradient(#FA5A4C, #FD1736);
+	background: -moz-linear-gradient(#FA5A4C, #FD1736);
+	background: -ms-linear-gradient(#FA5A4C, #FD1736);
+	background: -o-linear-gradient(#FA5A4C, #FD1736);
+	background: linear-gradient(#FA5A4C, #FD1736);
+	-pie-background: linear-gradient(#FA5A4C, #FD1736);
+}
+
+.black {
+	background: #ADADAD;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#ADADAD),
+		to(#1C1C1C));
+	background: -webkit-linear-gradient(#ADADAD, #1C1C1C);
+	background: -moz-linear-gradient(#ADADAD, #1C1C1C);
+	background: -ms-linear-gradient(#ADADAD, #1C1C1C);
+	background: -o-linear-gradient(#ADADAD, #1C1C1C);
+	background: linear-gradient(#ADADAD, #1C1C1C);
+	-pie-background: linear-gradient(#ADADAD, #1C1C1C);
 }
