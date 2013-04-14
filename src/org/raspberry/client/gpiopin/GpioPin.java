@@ -1,6 +1,6 @@
 package org.raspberry.client.gpiopin;
 
-public interface GpioPinInterface {
+public interface GpioPin {
 
 	public void setPinNumber(int number);
 
@@ -8,13 +8,13 @@ public interface GpioPinInterface {
 
 	public void setPinDescription(String description);
 
-	public void setState(GpioState state);
+	public void setState(GpioPinState state);
 
 	public void setPinShape(GpioPinShape shape);
 
 	public void setPinColor(GpioPinColor color);
 
-	public GpioState getState();
+	public GpioPinState getState();
 
 	public String getPinDescription();
 

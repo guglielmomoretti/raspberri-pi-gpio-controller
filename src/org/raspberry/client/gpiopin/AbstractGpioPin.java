@@ -1,10 +1,15 @@
 package org.raspberry.client.gpiopin;
 
+import org.raspberry.client.RaspberryPiUtils;
+import org.raspberry.client.gpiopin.event.GpioPinStateEvent;
+import org.raspberry.client.gpiopin.event.GpioPinStateHandler;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.web.bindery.event.shared.SimpleEventBus;
 
-public class AbstractGpioPin extends Widget implements GpioPinInterface {
+public abstract class AbstractGpioPin extends Widget implements GpioPin, GpioPinStateHandler {
 
 	protected static final String OUTER_SHAPE_CSS_STYLE_NAME = "outer";
 	protected static final String INNER_SHAPE_CSS_STYLE_NAME = "inner";
@@ -16,8 +21,8 @@ public class AbstractGpioPin extends Widget implements GpioPinInterface {
 	private int pinNumber = -1;
 	private String pinName = "-";
 	private String pinDescription = "-";
-	private GpioState pinState = GpioState.OFF;
-	private GpioPinShape pinShape = GpioPinShape.CIRCLE;
+	private GpioPinState pinState = GpioPinState.OFF;
+	private GpioPinShape pinShape = GpioPinShape.ROUNDED;
 	private GpioPinColor pinColor = GpioPinColor.BLUE;
 
 	public AbstractGpioPin(int pinNumber, GpioPinColor color, GpioPinShape shape) {
@@ -38,6 +43,17 @@ public class AbstractGpioPin extends Widget implements GpioPinInterface {
 		innerShapeElement.addClassName(INNER_SHAPE_CSS_STYLE_NAME);
 		innerShapeElement.addClassName(INNER_SHAPE_CSS_COLOR_STYLE_NAME);
 		innerShapeElement.addClassName(INNER_SHAPE_CSS_BOX_STYLE_NAME);
+
+		// add the event handler for the events coming from the GWT event bus
+		RaspberryPiUtils.EVENT_BUS.addHandler(GpioPinStateEvent.TYPE, new GpioPinStateHandler() {
+
+			@Override
+			public void onPinStateChanged(int pinNumber, GpioPinState state) {
+				// TODO Auto-generated method stub
+				if (pinNumber == getPinNumber())
+					AbstractGpioPin.this.onPinStateChanged(pinNumber, state);
+			}
+		});
 
 	}
 
@@ -60,13 +76,13 @@ public class AbstractGpioPin extends Widget implements GpioPinInterface {
 	}
 
 	@Override
-	public void setState(GpioState state) {
+	public void setState(GpioPinState state) {
 		// TODO Auto-generated method stub
 		this.pinState = state;
 	}
 
 	@Override
-	public GpioState getState() {
+	public GpioPinState getState() {
 		// TODO Auto-generated method stub
 		return pinState;
 	}

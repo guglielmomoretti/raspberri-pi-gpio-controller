@@ -1,6 +1,6 @@
 package org.raspberry.client.gpiopin;
 
-public enum GpioState {
+public enum GpioPinState {
 
 	ON, OFF
 
