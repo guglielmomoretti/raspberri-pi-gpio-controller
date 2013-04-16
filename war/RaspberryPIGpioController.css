@@ -1,7 +1,32 @@
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@font-face {
+	font-family: 'Droid Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Droid Sans'), local('DroidSans'), url(/font/droidsans.woff)
+		format('woff');
+}
+
+body {
+	font-family: Ubuntu, sans-serif;
+}
+
+@font-face {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Ubuntu'), url(/font/ubuntu_normal.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Ubuntu Bold'), local('Ubuntu-Bold'),
+		url(/font/ubuntu_bold.woff) format('woff');
+}
 
 .container {
-	behavior: url(http://css3pie.com/pie/PIE.htc);
+	behavior: url(pie/PIE.htc);
 	width: 400px;
 	height: 425px;
 	border: 2px;
@@ -15,7 +40,8 @@
 }
 
 .header {
-	font-family: 'Droid Sans', serif;
+	/*font-family: 'Droid Sans', serif;*/
+	font-family: 'Ubuntu', Tahoma, sans-serif;
 }
 
 .header.caption {
@@ -88,8 +114,20 @@
 	text-align: center;
 }
 
-.gpio-cell>div {
-	behavior: url(http://css3pie.com/pie/PIE.htc);
+.pin {
+	behavior: url(pie/PIE.htc);
+	-webkit-transition: -webkit-border-color, -webkit-border-width 0.5s
+		ease-in;
+	-moz-transition: -moz-border-color, -moz-border-width 0.5s ease-in;
+	-o-transition: border-color, border-width 0.5s ease-in;
+	-ms-transition: border-color, border-width 0.5s ease-in;
+	transition: border-color, border-width 0.5s ease-in;
+}
+
+.pin:hover {
+	border-color: blue;
+	border-width: 2px;
+	cursor: pointer;
 }
 
 .outer {
@@ -107,14 +145,14 @@
 	margin-top: 4px;
 }
 
-.rounded { //
-	behavior: url(http://css3pie.com/pie/PIE.htc);
+.rounded {
+	behavior: url(pie/PIE.htc);
 	border: 1px solid black;
 	border-radius: 3px;
 }
 
-.circle { //
-	behavior: url(http://css3pie.com/pie/PIE.htc);
+.circle {
+	behavior: url(pie/PIE.htc);
 	border-radius: 50%;
 	border: 1px solid black;
 }

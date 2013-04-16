@@ -4,12 +4,11 @@ import org.raspberry.client.gpiopin.GpioPinColor;
 import org.raspberry.client.gpiopin.GpioPinFactory;
 import org.raspberry.client.gpiopin.GpioPinShape;
 import org.raspberry.client.gpiopin.GpioPinState;
-import org.raspberry.client.gpiopin.event.GpioPinStateEvent;
-
+import org.raspberry.client.gpiopin.event.GpioPinClickEvent;
+import org.raspberry.client.gpiopin.event.GpioPinClickHandler;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.web.bindery.event.shared.SimpleEventBus;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -34,10 +33,14 @@ public class RaspberryPIGpioController implements EntryPoint {
 		RootPanel.get("mainDiv").add((Widget) GpioPinFactory.getGpioPin(11, GpioPinColor.ORANGE, GpioPinShape.SQUARED));
 		RootPanel.get("mainDiv").add((Widget) GpioPinFactory.getGpioPin(12, GpioPinColor.VIOLET, GpioPinShape.SQUARED));
 
-		RaspberryPiUtils.EVENT_BUS.fireEvent(new GpioPinStateEvent(1, GpioPinState.ON));
+		RaspberryPiUtils.EVENT_BUS.addHandler(GpioPinClickEvent.TYPE, new GpioPinClickHandler() {
 
-		RaspberryPiUtils.EVENT_BUS.fireEvent(new GpioPinStateEvent(5, GpioPinState.ON));
+			@Override
+			public void onPinClicked(int pinNumber, GpioPinState state, Object source) {
+				// TODO Auto-generated method stub
+				System.out.println("Il pin cliccato è il " + pinNumber);
+			}
+		});
 
-		RaspberryPiUtils.EVENT_BUS.fireEvent(new GpioPinStateEvent(8, GpioPinState.ON));
 	}
 }

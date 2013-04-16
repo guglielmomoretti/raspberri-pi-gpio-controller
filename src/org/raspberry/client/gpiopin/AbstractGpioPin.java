@@ -1,16 +1,19 @@
 package org.raspberry.client.gpiopin;
 
 import org.raspberry.client.RaspberryPiUtils;
+import org.raspberry.client.gpiopin.event.GpioPinClickEvent;
 import org.raspberry.client.gpiopin.event.GpioPinStateEvent;
 import org.raspberry.client.gpiopin.event.GpioPinStateHandler;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.web.bindery.event.shared.SimpleEventBus;
 
 public abstract class AbstractGpioPin extends Widget implements GpioPin, GpioPinStateHandler {
 
+	protected static final String BASE_CSS_STYLE_NAME = "pin";
 	protected static final String OUTER_SHAPE_CSS_STYLE_NAME = "outer";
 	protected static final String INNER_SHAPE_CSS_STYLE_NAME = "inner";
 	protected static final String INNER_SHAPE_CSS_COLOR_STYLE_NAME = "white";
@@ -37,23 +40,35 @@ public abstract class AbstractGpioPin extends Widget implements GpioPin, GpioPin
 	private void init() {
 		// imposto lo stile predefinito alla shape esterna
 		getElement().addClassName(OUTER_SHAPE_CSS_STYLE_NAME);
+		getElement().addClassName(BASE_CSS_STYLE_NAME);
 
 		// aggiungo il pallino tondo (l'interno del pin) all pin padre
 		getElement().appendChild(innerShapeElement);
 		innerShapeElement.addClassName(INNER_SHAPE_CSS_STYLE_NAME);
 		innerShapeElement.addClassName(INNER_SHAPE_CSS_COLOR_STYLE_NAME);
 		innerShapeElement.addClassName(INNER_SHAPE_CSS_BOX_STYLE_NAME);
+		innerShapeElement.addClassName(BASE_CSS_STYLE_NAME);
 
 		// add the event handler for the events coming from the GWT event bus
 		RaspberryPiUtils.EVENT_BUS.addHandler(GpioPinStateEvent.TYPE, new GpioPinStateHandler() {
 
 			@Override
-			public void onPinStateChanged(int pinNumber, GpioPinState state) {
+			public void onPinStateChanged(int pinNumber, GpioPinState state, Object source) {
 				// TODO Auto-generated method stub
-				if (pinNumber == getPinNumber())
-					AbstractGpioPin.this.onPinStateChanged(pinNumber, state);
+				if (source != AbstractGpioPin.this)
+					AbstractGpioPin.this.onPinStateChanged(pinNumber, state, source);
 			}
 		});
+
+		// aggiungo il click listener
+		addDomHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				RaspberryPiUtils.EVENT_BUS.fireEvent(new GpioPinClickEvent(pinNumber, pinState, AbstractGpioPin.this));
+			}
+		}, ClickEvent.getType());
 
 	}
 

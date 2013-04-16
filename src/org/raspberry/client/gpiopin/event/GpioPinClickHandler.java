@@ -4,7 +4,7 @@ import org.raspberry.client.gpiopin.GpioPinState;
 
 import com.google.gwt.event.shared.EventHandler;
 
-public interface GpioPinStateHandler extends EventHandler {
+public interface GpioPinClickHandler extends EventHandler {
 
-	public void onPinStateChanged(int pinNumber, GpioPinState state, Object source);
+	public void onPinClicked(int pinNumber, GpioPinState state, Object source);
 }

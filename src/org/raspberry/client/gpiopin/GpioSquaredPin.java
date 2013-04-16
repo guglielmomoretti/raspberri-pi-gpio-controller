@@ -7,7 +7,7 @@ public class GpioSquaredPin extends AbstractGpioPin {
 	}
 
 	@Override
-	public void onPinStateChanged(int pinNumber, GpioPinState state) {
+	public void onPinStateChanged(int pinNumber, GpioPinState state, Object source) {
 		// TODO Auto-generated method stub
 		System.out.println("Ricevuto evento!!! --> pin " + pinNumber + " ora è " + state);
 	}

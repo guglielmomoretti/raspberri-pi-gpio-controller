@@ -4,9 +4,9 @@ import org.raspberry.client.gpiopin.GpioPinState;
 
 import com.google.gwt.event.shared.GwtEvent;
 
-public class GpioPinStateEvent extends GwtEvent<GpioPinStateHandler> {
+public class GpioPinClickEvent extends GwtEvent<GpioPinClickHandler> {
 
-	public static Type<GpioPinStateHandler> TYPE = new Type<GpioPinStateHandler>();
+	public static Type<GpioPinClickHandler> TYPE = new Type<GpioPinClickHandler>();
 
 	private GpioPinState pinState = GpioPinState.OFF;
 
@@ -14,7 +14,7 @@ public class GpioPinStateEvent extends GwtEvent<GpioPinStateHandler> {
 
 	private Object source;
 
-	public GpioPinStateEvent(int pinNumber, GpioPinState state, Object source) {
+	public GpioPinClickEvent(int pinNumber, GpioPinState state, Object source) {
 		// TODO Auto-generated constructor stub
 		this.pinState = state;
 		this.pinNumber = pinNumber;
@@ -22,15 +22,15 @@ public class GpioPinStateEvent extends GwtEvent<GpioPinStateHandler> {
 	}
 
 	@Override
-	public Type<GpioPinStateHandler> getAssociatedType() {
+	public Type<GpioPinClickHandler> getAssociatedType() {
 		// TODO Auto-generated method stub
 		return TYPE;
 	}
 
 	@Override
-	protected void dispatch(GpioPinStateHandler handler) {
+	protected void dispatch(GpioPinClickHandler handler) {
 		// TODO Auto-generated method stub
-		handler.onPinStateChanged(pinNumber, pinState, source);
+		handler.onPinClicked(pinNumber, pinState, source);
 	}
 
 	public Object getSource() {
