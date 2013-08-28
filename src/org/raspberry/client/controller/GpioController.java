@@ -15,7 +15,7 @@ public class GpioController implements GpioPinClickHandler {
 	@Override
 	public void onPinClicked(int pinNumber, GpioPinState state, Object source) {
 		// TODO Auto-generated method stub
-
+		System.out.println("Il pin cliccato è il " + pinNumber);
 	}
 
 }

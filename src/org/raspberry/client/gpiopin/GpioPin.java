@@ -1,6 +1,8 @@
 package org.raspberry.client.gpiopin;
 
-public interface GpioPin {
+import com.google.gwt.user.client.ui.IsWidget;
+
+public interface GpioPin extends IsWidget{
 
 	public void setPinNumber(int number);
 

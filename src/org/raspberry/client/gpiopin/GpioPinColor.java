@@ -43,6 +43,14 @@ public enum GpioPinColor {
 			// TODO Auto-generated method stub
 			return super.toString().toLowerCase();
 		}
+	},
+
+	GREEN {
+		@Override
+		public String toString() {
+			// TODO Auto-generated method stub
+			return super.toString().toLowerCase();
+		}
 	}
 
 }
