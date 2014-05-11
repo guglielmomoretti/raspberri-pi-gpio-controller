@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="raspberripi-gpio-controller:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="gpiocontroller.war">
-      <element id="artifact" artifact-name="raspberripi-gpio-controller:war exploded" />
-    </root>
-  </artifact>
-</component>
